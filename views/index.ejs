@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/ico" href="calculadora.ico" />
+    <title>Supercalculadora</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/cuaderno.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="box">
+            <img src="/img/calculadora.png" width="40em">
+            <span id="titulo">SUPERCALCULADORA</span>
+        </div>
+    </nav>
+    <div id="escritorio">
+        <div id="calculadora">
+            <div id="pantalla">
+                <div id="adentro">
+                    <textarea name="display" id="display" disabled placeholder="CASIO"></textarea>
+                    <span id="resultado"></span>
+                </div>
+            </div>
+            <div id="teclas">
+                <div class="tecla">
+                    <button onclick="document.getElementById('display').textContent = '';" class="del">
+                        DEL
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="borrar()">
+                        AC
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        .
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        ^
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        +
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        /
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        *
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        -
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        7
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        8
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        9
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        (
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        4
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        5
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        6
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        )
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        1
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        2
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,false)">
+                        3
+                    </button>
+                </div>
+                <div class="tecla">
+                    <button onclick="imprimir(this,true)" class="igual">
+                        =
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="paper">
+            <div id="pattern">
+                <div id="content">
+                    <center>
+                        <span class="obtener"><img src="/img/clock.png" alt="historial" width="18em">OBTENER HISTORIAL</span>
+                    </center>
+                    <table class="historial" id="tabla">
+                        <thead>
+                            <tr>
+                                <th>ENTRADA</th>
+                                <th>RESULTADO</th>
+                                <th>MARCAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="operacion">3*5+2</td>
+                                <td class="resultado">17</td>
+                                <td><button onclick="resaltar(this)"><img src="/img/highlighter.png" alt="resaltar"
+                                            width="15em"></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function imprimir(boton, esIgual) {
+            if (!esIgual) {
+                document.getElementById("display").textContent += boton.textContent.trim();
+            } else {
+                var hi = document.getElementById("tabla");
+                var tex = document.getElementById("display").textContent;
+                if (tex!="") {
+                    hi.innerHTML += "<tr><td class='operacion'>" + tex + "</td><td class='resultado'>17</td><td><button onclick='resaltar(this)'><img src='highlighter.png' alt='resaltar' width='15em'></button></td></tr>"
+                }
+            }
+        }
+        function resaltar(boton) {
+            var tdActual = boton.parentNode;
+            var trActual = tdActual.parentNode;
+            var tbodyActual = trActual.parentNode;
+            var trs = tbodyActual.querySelectorAll("tr");
+            for (let i = 0; i < trs.length; i++) {
+                trs[i].style.backgroundColor = "";
+            }
+            trActual.style.backgroundColor = "yellow";
+        }
+
+        function borrar() {
+            var d = document.getElementById("display").textContent;
+            var nd = d.substring(0, d.length - 1);
+            document.getElementById("display").textContent = nd;
+        }
+    </script>
+</body>
+
+</html>
