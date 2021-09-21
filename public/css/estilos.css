@@ -10,9 +10,11 @@ nav {
 }
 
 .box {
-    display: flex;
-    align-items: center;
+    display: grid;
+    /* align-items: center; */
     padding-top: 0.2em;
+    grid-template-columns: 40% 30% 30%;
+    justify-content: center;
 }
 
 #historial {
@@ -21,15 +23,30 @@ nav {
     background-color: white;
 }
 
-#titulo {
+.titulo {
     font-size: 2em;
     font-weight: 700;
     color: #89c763;
+    width: fit-content;
+}
+
+.titulo img {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: #89c763;
+}
+
+.titulo:hover {
+    background-color: teal;
+    border-radius: 0.6em;
 }
 
 body {
     background-image: url(https://cdnb.artstation.com/p/assets/images/images/004/682/457/large/simon-sanchez-madera-tilex1.jpg?1485480359&dl=1);
-    background-repeat: round;
+    /*background-repeat: round;*/
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
@@ -37,7 +54,10 @@ body {
     margin: 1.5em;
     background-color: black;
     border-radius: 1em 1em 0 0;
-    border: 0.4em solid #383838;
+    border: 0.5em solid #383838;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
 }
 
 #escritorio {
@@ -81,7 +101,8 @@ textarea {
     padding: 1em 1em 0 1em;
     resize: none;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 #shadow-input {
@@ -135,17 +156,22 @@ textarea {
     background: rgba(0, 212, 255, 1);
 }
 
+.igual2 {
+    grid-row-start: 4;
+    grid-row-end: 7;
+    grid-column-start: 4;
+}
+
 .igual {
     height: 100%;
-    background: green !important;
-    background: linear-gradient(-180deg, green 68%, white 68%, white 74%, rgb(48 37 33) 74%) !important;
+    background: linear-gradient( -180deg, green 91%, white 91%, white 92%, rgb(48 37 33) 92%) !important;
 }
 
 .igual:hover {
     cursor: pointer;
     animation-name: posicionamiento;
     animation-duration: 0.1s;
-    height: 75%;
+    height: 92% !important;
     background: green !important;
 }
 
@@ -157,7 +183,7 @@ textarea {
 
 .del:hover {
     cursor: pointer;
-    animation-name: posicionamiento;
+    animation-name: posicionamiento2;
     animation-duration: 0.1s;
     height: 75%;
     background: red !important;
@@ -190,20 +216,63 @@ td button:hover {
     }
 }
 
-.obtener{
+@keyframes posicionamiento2 {
+    from {
+        height: 100%;
+    }
+    to {
+        height: 92%;
+    }
+}
+
+.obtener {
     border: 1px dotted gray;
     border-radius: 2rem;
     padding-left: 1em;
     padding-right: 1em;
 }
 
-.obtener img{
+.obtener img {
     vertical-align: middle;
 }
 
-.obtener:hover{
+.obtener:hover {
     background-color: rgb(73, 131, 73);
     color: white;
     border: 3px solid rgb(255, 255, 0);
     cursor: pointer;
+}
+
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+.blink2 {
+    animation: blink-animation 4s steps(5, start) infinite;
+    -webkit-animation: blink-animation 4s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
 }

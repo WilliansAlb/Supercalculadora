@@ -6,5 +6,6 @@
 
   <h3 align="center">SUPERCALCULADORA</h3>
 </p>
-#SUPERCALCULADORA
+
+# SUPERCALCULADORA
 Calculadora escrita en Javascript, con un inesperado no tan deplorable manejo de CSS. Dicha calculadora realiza las operaciones mediante solicitar el resultado a un Worker.
